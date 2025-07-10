@@ -84,4 +84,4 @@ with col2:
     st.page_link("pages/Tips_and_Resources.py", label="View Career Tips", icon="📘", help="Get tips an resources to boost your professional growth")
 
 
-# st.write("Session User Info:", st.session_state.user_info)
+# st.write("Session User Info:", st.session_state.user)

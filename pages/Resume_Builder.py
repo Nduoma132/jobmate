@@ -17,7 +17,7 @@ st.title("📄 Resume Builder")
 # st.markdown("Build and refine your resume with AI assistance.")
 
 # Check if user is logged in
-if "user_info" not in st.session_state:
+if "user" not in st.session_state:
     st.error("You need to log in to use the Resume Builder.")
     st.stop()
 
