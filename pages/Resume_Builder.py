@@ -53,7 +53,8 @@ if submit:
     }
     st.write("Session User Info:", st.session_state.user_resume_data)
 
-    prompt = resume_prompt()
+    prompt = resume_prompt(st.session_state["user_resume_data"])
+
 
     with st.spinner("Generating your resume..."):
         resume = call_gemini(prompt)
