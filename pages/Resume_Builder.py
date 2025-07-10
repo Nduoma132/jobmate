@@ -19,7 +19,8 @@ if "user" not in st.session_state:
     st.error("You need to log in to use the Resume Builder.")
     st.stop()
 
-user = st.session_state.user
+else:
+    user = st.session_state["user"]
 
 st.markdown(f"Welcome **{user['name']}**, let's build your resume.")
 st.markdown("Please fill in the details below to generate your personalized resume.")
