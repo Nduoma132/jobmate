@@ -14,6 +14,8 @@ show_sidebar()
 st.title("📄 Resume Builder")
 # st.markdown("Build and refine your resume with AI assistance.")
 
+st.write("🔍 Session State Debug:", st.session_state)
+
 # Check if user is logged in
 if "user" not in st.session_state:
     st.error("You need to log in to use the Resume Builder.")
