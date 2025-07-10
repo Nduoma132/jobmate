@@ -11,8 +11,6 @@ from prompts import resume_prompt
 
 show_sidebar()
 
-user = st.session_state.user
-
 st.title("📄 Resume Builder")
 # st.markdown("Build and refine your resume with AI assistance.")
 
@@ -20,6 +18,8 @@ st.title("📄 Resume Builder")
 if "user" not in st.session_state:
     st.error("You need to log in to use the Resume Builder.")
     st.stop()
+
+user = st.session_state.user
 
 st.markdown(f"Welcome **{user['name']}**, let's build your resume.")
 st.markdown("Please fill in the details below to generate your personalized resume.")
@@ -46,8 +46,7 @@ if submit:
         "summary": summary,
         "skills": skills,
         "experience": experience,
-        "certif"
-        "ications": certifications or "None"
+        "certifications": certifications or "None"
     }
     st.write("Session User Info:", st.session_state.user_resume_data)
 
