@@ -2,11 +2,11 @@ import streamlit as st
 from config import call_gemini, show_sidebar
 from prompts import resume_prompt
 
-from docx import Document
-from io import BytesIO
+# from docx import Document
+# from io import BytesIO
 
-import pdfkit
-from io import BytesIO
+# import pdfkit
+# from io import BytesIO
 
 
 show_sidebar()
@@ -64,40 +64,40 @@ if submit:
     
 # Function to export resume as PDF or Word
 # Comment these out later
-def export_as_pdf(resume_text):
-    pdf = pdfkit.from_string(resume_text, False)
-    st.download_button(
-        label="Download PDF",
-        data=pdf,
-        file_name="resume.pdf",
-        mime="application/pdf"
-    )
+# def export_as_pdf(resume_text):
+#     pdf = pdfkit.from_string(resume_text, False)
+#     st.download_button(
+#         label="Download PDF",
+#         data=pdf,
+#         file_name="resume.pdf",
+#         mime="application/pdf"
+#     )
 
-def export_as_word(resume_text):
-    doc = Document()
-    doc.add_heading('Resume', level=1)
-    for line in resume_text.split('\n'):
-        doc.add_paragraph(line)
+# def export_as_word(resume_text):
+#     doc = Document()
+#     doc.add_heading('Resume', level=1)
+#     for line in resume_text.split('\n'):
+#         doc.add_paragraph(line)
     
-    buffer = BytesIO()
-    doc.save(buffer)
-    buffer.seek(0)
+#     buffer = BytesIO()
+#     doc.save(buffer)
+#     buffer.seek(0)
 
-    st.download_button(
-        label="Download Word Document",
-        data=buffer,
-        file_name="resume.docx",
-        mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
-    )
+#     st.download_button(
+#         label="Download Word Document",
+#         data=buffer,
+#         file_name="resume.docx",
+#         mime="application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+#     )
 
 # Buttons for exporting the resume
-col1, col2 = st.columns(2)
-with col1:
-    if st.button("📄 Export as PDF"):
-        export_as_pdf(st.session_state.generated_resume)
-with col2:
-    if st.button("📝 Export as Word"):
-        export_as_word(st.session_state.generated_resume)
+# col1, col2 = st.columns(2)
+# with col1:
+#     if st.button("📄 Export as PDF"):
+#         export_as_pdf(st.session_state.generated_resume)
+# with col2:
+#     if st.button("📝 Export as Word"):
+#         export_as_word(st.session_state.generated_resume)
 
 # Expanding section for refining specific parts of the resume
 with st.expander("💡 Ask to Improve This Section"):
