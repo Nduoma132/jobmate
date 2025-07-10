@@ -8,6 +8,18 @@ from prompts import resume_prompt
 # import pdfkit
 # from io import BytesIO
 
+# App Configuration
+app_title = "Resume Builder"
+app_icon = "📄"
+
+# Set page configuration
+st.set_page_config( 
+    page_title=app_title,
+    page_icon=app_icon,
+    layout="centered",
+    initial_sidebar_state="collapsed"
+    )
+
 
 show_sidebar()
 
@@ -51,7 +63,6 @@ if submit:
         "experience": experience,
         "certifications": certifications or "None"
     }
-    st.write("Session User Info:", st.session_state.user_resume_data)
 
     prompt = resume_prompt(st.session_state["user_resume_data"])
 

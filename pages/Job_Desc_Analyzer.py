@@ -5,6 +5,18 @@ from prompts import extract_prompt, analyze_prompt
 
 show_sidebar()
 
+# App Configuration
+app_title = "Job Description Analyzer"
+app_icon = "📋"
+
+# Set page configuration
+st.set_page_config( 
+    page_title=app_title,
+    page_icon=app_icon,
+    layout="centered",
+    initial_sidebar_state="collapsed"
+    )
+
 def display_score_bar(score):
     color = "green" if score >= 75 else "orange" if score >= 50 else "red"
     st.markdown(f"""
