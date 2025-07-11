@@ -1,5 +1,6 @@
 import streamlit as st
 import google.generativeai as genai
+from prompts import chatbot_prompt
 
 def get_api_key():
     if 'GEMINI_API_KEY' in st.secrets:
@@ -24,10 +25,29 @@ def get_model(model_name="gemini-2.5-flash"):
     genai.configure(api_key=api_key)
     return genai.GenerativeModel(model_name)
 
+# SINGLE-TURN CALL (used for CV/resume tools)
 def call_gemini(prompt, model_name="gemini-2.5-flash"):
     model = get_model(model_name)
     response = model.generate_content(prompt)
     return response.text
+
+
+# MULTI-TURN CHATBOT (with memory + system prompt)
+# def get_chatbot(system_prompt, model_name="gemini-2.5-flash"):
+#     model = get_model(model_name)
+#     chat = model.start_chat(history=[
+#         {"role": "user", "parts": [chatbot_prompt]}
+#     ])
+#     return chat
+
+def get_chatbot(user, model_name="gemini-2.5-flash"):
+    model = get_model(model_name)
+    system_prompt = chatbot_prompt(user)  # ✅ Call the function
+    chat = model.start_chat(history=[
+        {"role": "user", "parts": [system_prompt]}  # ✅ Use the prompt string
+    ])
+    return chat
+
 
 
 # Sidebar navigation
