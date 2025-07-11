@@ -71,17 +71,64 @@ show_sidebar()
 
 # Dashboard buttons
 st.markdown("## 🚀 Get Started")
+
+
+# col1, col2 = st.columns(2)
+# with col1:
+#     st.page_link("pages/Resume_Builder.py", label="Build My Resume", icon="📄", help="Craft a professional resume with AI assistance")
+#     st.page_link("pages/CV_Builder.py", label="Build My CV", icon="📝", help="Generate a clean CV in seconds with AI assistance")
+#     st.page_link("pages/Cover_Letter_Builder.py", label="Write Cover Letter", icon="✉️", help="Create a tailored cover letter for your job applications")
+
+# with col2:
+#     st.page_link("pages/Job_Desc_Analyzer.py", label="Analyze Jobs ", icon="📋", help="Get concise job description analysis and even analyze your fit")
+#     st.page_link("pages/Interview_Prep.py", label="Practice Interview", icon="🎙️", help="Get custom interview prep questions")
+#     st.page_link("pages/Tips_and_Resources.py", label="View Career Tips", icon="📘", help="Get tips an resources to boost your professional growth")
+
+
+
+st.markdown("""
+<style>
+.stButton > button {
+    background-color: #1f77b4;
+    color: white;
+    font-weight: bold;
+    border-radius: 10px;
+    padding: 0.75em 1.5em;
+    margin: 0.5em 0;
+    width: 100%;
+}
+.stButton > button:hover {
+    background-color: #145a86;
+    color: #f0f0f0;
+    box-shadow: 0 4px 8px rgba(0, 255, 0, 0.2);
+}
+</style>
+""", unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 
 with col1:
-    st.page_link("pages/Resume_Builder.py", label="Build My Resume", icon="📄", help="Craft a professional resume with AI assistance")
-    st.page_link("pages/CV_Builder.py", label="Build My CV", icon="📝", help="Generate a clean CV in seconds with AI assistance")
-    st.page_link("pages/Cover_Letter_Builder.py", label="Write Cover Letter", icon="✉️", help="Create a tailored cover letter for your job applications")
+    if st.button("📄 Build My Resume"):
+        st.switch_page("pages/Resume_Builder.py")
+
+    if st.button("📝 Build My CV"):
+        st.switch_page("pages/CV_Builder.py")
+
+    if st.button("✉️ Write Cover Letter"):
+        st.switch_page("pages/Cover_Letter_Builder.py")
 
 with col2:
-    st.page_link("pages/Job_Desc_Analyzer.py", label="Analyze Jobs ", icon="📋", help="Get concise job description analysis and even analyze your fit")
-    st.page_link("pages/Interview_Prep.py", label="Practice Interview", icon="🎙️", help="Get custom interview prep questions")
-    st.page_link("pages/Tips_and_Resources.py", label="View Career Tips", icon="📘", help="Get tips an resources to boost your professional growth")
+    if st.button("📋 Analyze Jobs"):
+        st.switch_page("pages/Job_Desc_Analyzer.py")
+
+    if st.button("🎙️ Practice Interview"):
+        st.switch_page("pages/Interview_Prep.py")
+
+    if st.button("📘 View Career Tips"):
+        st.switch_page("pages/Tips_and_Resources.py")
+
+if st.button("💬 Open Chat Assistant"):
+    st.switch_page("pages/Chatbot.py")
 
 
 # st.write("Session User Info:", st.session_state.user)

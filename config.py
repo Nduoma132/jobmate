@@ -3,16 +3,21 @@ import google.generativeai as genai
 
 def get_api_key():
     if 'GEMINI_API_KEY' in st.secrets:
-        st.success('API key already provided!', icon='✅')
         return st.secrets['GEMINI_API_KEY']
-    else:
+    
+    # Only show this if not already set
+    if "user_api_key" not in st.session_state:
         api_key = st.text_input('Enter Gemini API token:', type='password')
         if not api_key:
             st.warning('Please enter your API key!', icon='⚠️')
             st.stop()
         else:
+            st.session_state.user_api_key = api_key
             st.success('API key set. Ready to chat!', icon='👉')
             return api_key
+
+    return st.session_state.user_api_key
+
 
 def get_model(model_name="gemini-2.5-flash"):
     api_key = get_api_key()
